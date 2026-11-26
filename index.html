@@ -35,7 +35,8 @@
     .chat-body{height:290px;padding:16px;overflow-y:auto;background:#f7f9f1}.chat-message{max-width:85%;padding:11px 13px;border-radius:13px;margin-bottom:10px;font-size:14px;line-height:1.45}.chat-message.bot{background:#e4edd9;color:#284233;border-bottom-left-radius:4px}.chat-message.user{background:#123b2a;color:#fff;margin-left:auto;border-bottom-right-radius:4px}
     .chat-options{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.chat-options button{border:1px solid #b7c7ac;background:#fff;color:#315a35;border-radius:20px;padding:8px 10px;font-size:12px;font-weight:700;cursor:pointer}
     .chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid #e5eadf}.chat-form input{flex:1;min-width:0;border:1px solid #d8dfd2;border-radius:10px;padding:11px 12px;outline:none}.chat-form input:focus{border-color:#78a84b}.chat-form button{border:0;border-radius:10px;background:#20c766;color:#fff;font-weight:800;padding:0 14px;cursor:pointer}
-    @media(max-width:850px){header{align-items:flex-start;flex-direction:column}nav{gap:14px}.hero{grid-template-columns:1fr;padding-top:55px;padding-bottom:55px}.deal{justify-self:start;transform:none}.products{grid-template-columns:repeat(2,1fr)}.sunday{grid-template-columns:1fr}.sunday img{height:260px}footer{grid-template-columns:1fr 1fr}}
+    .roast-video-wrap{position:relative;height:340px;border-radius:24px;overflow:hidden;box-shadow:0 18px 45px #0004;opacity:0;transform:translateY(28px) scale(.96);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}.roast-video-wrap.visible{opacity:1;transform:translateY(0) scale(1)}.roast-video-wrap video{width:100%;height:100%;object-fit:cover;display:block}.roast-video-wrap::after{content:"";position:absolute;inset:0;border:3px solid #c8ed5533;border-radius:24px;pointer-events:none}.roast-label{position:absolute;left:16px;bottom:16px;background:#123b2ae8;color:#fff;border-radius:12px;padding:9px 12px;font-weight:800;font-size:13px;z-index:2}
+    @media(max-width:850px){header{align-items:flex-start;flex-direction:column}nav{gap:14px}.hero{grid-template-columns:1fr;padding-top:55px;padding-bottom:55px}.deal{justify-self:start;transform:none}.products{grid-template-columns:repeat(2,1fr)}.sunday{grid-template-columns:1fr}.sunday img{height:260px}.roast-video-wrap{height:260px}footer{grid-template-columns:1fr 1fr}}
     @media(max-width:520px){.products{grid-template-columns:1fr 1fr;gap:10px}.product img{height:125px}.product div{padding:13px}.product h3{font-size:16px}.product p{font-size:12px}.strip{grid-template-columns:1fr;padding:22px}.hero h2{letter-spacing:-1px}.deal{max-width:100%}footer{grid-template-columns:1fr}.btn{width:100%;text-align:center}.chat-window{right:10px;bottom:82px;width:calc(100vw - 20px)}}
   </style>
 </head>
@@ -75,7 +76,10 @@
 
     <section class="sunday" id="domingo">
       <div><span class="eyebrow">Domingo tem sabor especial</span><h2>Seu almoço de domingo já tem destino!</h2><p>Venha garantir aquele frango assado delicioso para reunir a família. Aproveite nossa oferta especial e deixe o almoço por nossa conta!</p><div class="price-line">FRANGO ASSADO — R$ 50,00</div><div class="actions"><a class="btn primary" href="https://wa.me/5567996711013?text=Ol%C3%A1!%20Quero%20reservar%20um%20frango%20assado%20de%20domingo." target="_blank" rel="noopener">Consultar pelo WhatsApp</a></div></div>
-      <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=1000&q=85" alt="Frango assado dourado servido para o almoço">
+      <div class="roast-video-wrap" id="roastVideoWrap">
+        <video id="roastVideo" src="videos/videos do frango na maquina.mp4" autoplay muted loop playsinline controls preload="metadata" aria-label="Frango assado girando na máquina"></video>
+        <div class="roast-label">🔥 Assando na hora</div>
+      </div>
     </section>
 
     <section class="callout"><h2>Mercearia Guarani: vendemos de tudo!</h2><p>Mercadorias no melhor preço, variedade para toda a família e atendimento com carinho.<br><strong>Venha fazer uma visita. Esperamos por você!</strong></p><a class="btn primary" style="background:var(--green);color:white" href="https://wa.me/5567996711013" target="_blank" rel="noopener">Peça informações agora</a></section>
@@ -177,6 +181,27 @@
       const message = chatInput.value.trim();
       if (message) askAssistant(message);
     };
+
+    const roastWrap = document.getElementById('roastVideoWrap');
+    const roastVideo = document.getElementById('roastVideo');
+
+    if (roastWrap && roastVideo && 'IntersectionObserver' in window) {
+      const roastObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            roastWrap.classList.add('visible');
+            roastVideo.play().catch(() => {});
+          } else {
+            roastWrap.classList.remove('visible');
+            roastVideo.pause();
+          }
+        });
+      }, { threshold: 0.35 });
+
+      roastObserver.observe(roastWrap);
+    } else if (roastWrap) {
+      roastWrap.classList.add('visible');
+    }
   </script>
 </body>
 </html>
