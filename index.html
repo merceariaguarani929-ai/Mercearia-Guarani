@@ -118,10 +118,8 @@
     const chatBody = document.getElementById('chatBody');
     const chatForm = document.getElementById('chatForm');
     const chatInput = document.getElementById('chatInput');
-    const chatLaunch = document.getElementById('chatLaunch');
 
     chatClose.onclick = () => chatWindow.classList.remove('open');
-    chatLaunch.onclick = () => chatWindow.classList.toggle('open');
     chatToggle.onclick = () => chatWindow.classList.toggle('open');
 
     function addMessage(text, type) {
