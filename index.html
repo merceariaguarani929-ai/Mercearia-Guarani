@@ -29,6 +29,7 @@
     footer{background:#0c281d;color:#eaf3ec;padding:45px max(7vw,22px);display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:25px}footer h3{color:var(--lime);margin-top:0}footer p{line-height:1.7;color:#c9d8cd;font-size:14px}footer a{color:white;text-decoration:none}
     .copyright{background:#071b13;color:#9db0a2;text-align:center;padding:14px;font-size:12px}
     .whats{position:fixed;right:20px;bottom:20px;background:#20c766;color:white;text-decoration:none;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;font-size:27px;box-shadow:0 8px 25px #0004;z-index:10;border:0;cursor:pointer}
+    .chat-launch{position:fixed;right:20px;bottom:90px;width:54px;height:54px;border:0;border-radius:50%;background:var(--lime);color:var(--green);font-size:23px;font-weight:900;box-shadow:0 8px 25px #0004;z-index:10;cursor:pointer}
     .chat-window{position:fixed;right:20px;bottom:90px;width:min(350px,calc(100vw - 40px));background:#fff;border-radius:20px;box-shadow:0 16px 50px #123b2a55;overflow:hidden;z-index:11;transform:translateY(20px) scale(.96);opacity:0;pointer-events:none;transition:.25s}.chat-window.open{transform:translateY(0) scale(1);opacity:1;pointer-events:auto}
     .chat-header{background:#123b2a;color:#fff;padding:16px 18px;display:flex;align-items:center;justify-content:space-between}.chat-header strong{display:block}.chat-header small{color:#c9d8cd}.chat-close{border:0;background:#ffffff18;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer}
     .chat-body{height:290px;padding:16px;overflow-y:auto;background:#f7f9f1}.chat-message{max-width:85%;padding:11px 13px;border-radius:13px;margin-bottom:10px;font-size:14px;line-height:1.45}.chat-message.bot{background:#e4edd9;color:#284233;border-bottom-left-radius:4px}.chat-message.user{background:#123b2a;color:#fff;margin-left:auto;border-bottom-right-radius:4px}
@@ -107,7 +108,8 @@
     </form>
   </div>
 
-  <button class="whats" id="chatToggle" type="button" aria-label="Abrir chat">✆</button>
+  <button class="chat-launch" id="chatToggle" type="button" aria-label="Abrir assistente virtual">✦</button>
+  <a class="whats" id="whatsLink" href="https://wa.me/5567996711013?text=Ol%C3%A1%2C%20Mercearia%20Guarani!" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">✆</a>
 
   <script>
     const chatWindow = document.getElementById('chatWindow');
@@ -116,9 +118,11 @@
     const chatBody = document.getElementById('chatBody');
     const chatForm = document.getElementById('chatForm');
     const chatInput = document.getElementById('chatInput');
+    const chatLaunch = document.getElementById('chatLaunch');
 
-    chatToggle.onclick = () => chatWindow.classList.toggle('open');
     chatClose.onclick = () => chatWindow.classList.remove('open');
+    chatLaunch.onclick = () => chatWindow.classList.toggle('open');
+    chatToggle.onclick = () => chatWindow.classList.toggle('open');
 
     function addMessage(text, type) {
       const message = document.createElement('div');
