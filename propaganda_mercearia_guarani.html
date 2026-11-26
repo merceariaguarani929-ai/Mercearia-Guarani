@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123b2a">
+  <title>Mercearia Guarani | Economia, variedade e qualidade</title>
+  <style>
+    :root{--green:#123b2a;--green2:#1f6744;--lime:#c8ed55;--cream:#fff9ed;--orange:#f28b32;--ink:#1d2a22}
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--ink)}
+    .top{background:#0c281d;color:#fff;text-align:center;padding:10px 16px;font-size:14px;letter-spacing:.3px}
+    header{background:linear-gradient(120deg,#123b2a,#1e6744);color:white;padding:22px max(6vw,20px);display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:13px}.logo{width:54px;height:54px;border-radius:16px;background:var(--lime);color:var(--green);display:grid;place-items:center;font-size:27px;font-weight:900;box-shadow:0 7px 18px #0003}
+    .brand h1{font-size:clamp(21px,3vw,29px);margin:0;letter-spacing:.4px}.brand small{display:block;color:#d7efdf;margin-top:4px}
+    nav{display:flex;gap:22px;flex-wrap:wrap}nav a{color:#fff;text-decoration:none;font-weight:700;font-size:14px}nav a:hover{color:var(--lime)}
+    .hero{min-height:570px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;padding:65px max(7vw,22px);gap:35px;background:linear-gradient(90deg,#102f22 0%,#123b2aeb 48%,#123b2a55 100%),url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1800&q=85') center/cover;color:white}
+    .eyebrow{display:inline-block;background:#c8ed5520;border:1px solid #c8ed5577;color:var(--lime);padding:9px 14px;border-radius:30px;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}
+    .hero h2{font-size:clamp(42px,6vw,72px);line-height:.99;margin:20px 0;max-width:650px;letter-spacing:-2px}.hero h2 span{color:var(--lime)}
+    .hero p{font-size:19px;line-height:1.6;color:#edf5ef;max-width:570px}
+    .actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-block;padding:16px 22px;border-radius:12px;text-decoration:none;font-weight:800;transition:.2s}.btn:hover{transform:translateY(-3px)}.primary{background:var(--lime);color:#173522;box-shadow:0 8px 25px #0003}.secondary{border:1px solid #ffffff8c;color:#fff;background:#ffffff12}
+    .deal{background:var(--lime);color:#163523;padding:28px;border-radius:24px;max-width:360px;justify-self:end;box-shadow:0 25px 60px #0005;transform:rotate(2deg);text-align:center}
+    .deal .sun{font-size:13px;font-weight:900;letter-spacing:2px}.deal h3{font-size:35px;line-height:1;margin:13px 0}.price{font-size:76px;font-weight:1000;letter-spacing:-5px}.price small{font-size:28px;letter-spacing:0}.deal p{color:#25452e;font-size:15px;font-weight:700;margin:8px 0 0}
+    .strip{display:grid;grid-template-columns:repeat(3,1fr);background:#f0f4df;padding:23px max(7vw,20px);gap:15px;text-align:center}.strip strong{display:block;color:var(--green);font-size:17px}.strip span{font-size:13px;color:#5b6c5e}
+    section{padding:75px max(7vw,22px)}.section-title{text-align:center;margin:0 auto 38px;max-width:650px}.section-title .eyebrow{background:#e7f1d1;border-color:#d4e6a9;color:#315a35}.section-title h2{font-size:clamp(30px,4vw,44px);color:var(--green);margin:15px 0 10px}.section-title p{color:#68756b;line-height:1.6}
+    .products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.product{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 9px 30px #183b2410;transition:.25s}.product:hover{transform:translateY(-6px);box-shadow:0 16px 35px #183b2420}.product img{width:100%;height:175px;object-fit:cover;display:block}.product div{padding:18px}.product h3{margin:0 0 7px;color:var(--green);font-size:18px}.product p{margin:0;color:#6b786e;font-size:14px;line-height:1.5}
+    .sunday{background:linear-gradient(120deg,#172f22,#285c3c);color:white;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:35px}.sunday img{width:100%;height:340px;object-fit:cover;border-radius:24px;box-shadow:0 18px 45px #0004}.sunday .eyebrow{color:var(--lime)}.sunday h2{font-size:clamp(34px,4.5vw,54px);line-height:1.03;margin:18px 0}.sunday h2 span{color:var(--lime)}.sunday p{color:#e0eee4;line-height:1.7;font-size:17px}.sunday .price-line{font-size:24px;font-weight:800;color:var(--lime)}
+    .callout{background:#f2f5e8;text-align:center}.callout h2{font-size:clamp(29px,4vw,42px);color:var(--green);margin:0 0 12px}.callout p{color:#637066;line-height:1.6}
+    footer{background:#0c281d;color:#eaf3ec;padding:45px max(7vw,22px);display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:25px}footer h3{color:var(--lime);margin-top:0}footer p{line-height:1.7;color:#c9d8cd;font-size:14px}footer a{color:white;text-decoration:none}
+    .copyright{background:#071b13;color:#9db0a2;text-align:center;padding:14px;font-size:12px}
+    .whats{position:fixed;right:20px;bottom:20px;background:#20c766;color:white;text-decoration:none;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;font-size:27px;box-shadow:0 8px 25px #0004;z-index:10;border:0;cursor:pointer}
+    .chat-window{position:fixed;right:20px;bottom:90px;width:min(350px,calc(100vw - 40px));background:#fff;border-radius:20px;box-shadow:0 16px 50px #123b2a55;overflow:hidden;z-index:11;transform:translateY(20px) scale(.96);opacity:0;pointer-events:none;transition:.25s}.chat-window.open{transform:translateY(0) scale(1);opacity:1;pointer-events:auto}
+    .chat-header{background:#123b2a;color:#fff;padding:16px 18px;display:flex;align-items:center;justify-content:space-between}.chat-header strong{display:block}.chat-header small{color:#c9d8cd}.chat-close{border:0;background:#ffffff18;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer}
+    .chat-body{height:290px;padding:16px;overflow-y:auto;background:#f7f9f1}.chat-message{max-width:85%;padding:11px 13px;border-radius:13px;margin-bottom:10px;font-size:14px;line-height:1.45}.chat-message.bot{background:#e4edd9;color:#284233;border-bottom-left-radius:4px}.chat-message.user{background:#123b2a;color:#fff;margin-left:auto;border-bottom-right-radius:4px}
+    .chat-options{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.chat-options button{border:1px solid #b7c7ac;background:#fff;color:#315a35;border-radius:20px;padding:8px 10px;font-size:12px;font-weight:700;cursor:pointer}
+    .chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid #e5eadf}.chat-form input{flex:1;min-width:0;border:1px solid #d8dfd2;border-radius:10px;padding:11px 12px;outline:none}.chat-form input:focus{border-color:#78a84b}.chat-form button{border:0;border-radius:10px;background:#20c766;color:#fff;font-weight:800;padding:0 14px;cursor:pointer}
+    @media(max-width:850px){header{align-items:flex-start;flex-direction:column}nav{gap:14px}.hero{grid-template-columns:1fr;padding-top:55px;padding-bottom:55px}.deal{justify-self:start;transform:none}.products{grid-template-columns:repeat(2,1fr)}.sunday{grid-template-columns:1fr}.sunday img{height:260px}footer{grid-template-columns:1fr 1fr}}
+    @media(max-width:520px){.products{grid-template-columns:1fr 1fr;gap:10px}.product img{height:125px}.product div{padding:13px}.product h3{font-size:16px}.product p{font-size:12px}.strip{grid-template-columns:1fr;padding:22px}.hero h2{letter-spacing:-1px}.deal{max-width:100%}footer{grid-template-columns:1fr}.btn{width:100%;text-align:center}.chat-window{right:10px;bottom:82px;width:calc(100vw - 20px)}}
+  </style>
+</head>
+<body>
+  <div class="top">🛒 Economia de verdade, variedade e atendimento de confiança!</div>
+  <header>
+    <div class="brand"><div class="logo">G</div><div><h1>MERCEARIA GUARANI</h1><small>Tudo pertinho de você. Tudo com preço especial!</small></div></div>
+    <nav><a href="#produtos">O que vendemos</a><a href="#domingo">Oferta de domingo</a><a href="#contato">Contato</a></nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Sua mercearia completa</span>
+        <h2>Você encontra de tudo com <span>o melhor preço!</span></h2>
+        <p>Do básico do dia a dia às compras do churrasco: na Mercearia Guarani tem variedade, qualidade e aquele atendimento que você merece.</p>
+        <div class="actions"><a class="btn primary" href="https://wa.me/5567996711013?text=Ol%C3%A1%2C%20Mercearia%20Guarani!%20Quero%20saber%20mais%20sobre%20as%20ofertas." target="_blank" rel="noopener">Fale com a gente no WhatsApp</a><a class="btn secondary" href="#produtos">Conheça nossos produtos</a></div>
+      </div>
+      <div class="deal"><div class="sun">🔥 OFERTA ESPECIAL DE DOMINGO 🔥</div><h3>FRANGO ASSADO</h3><div class="price"><small>R$</small> 50</div><p>Seu domingo fica muito mais gostoso!</p></div>
+    </section>
+
+    <div class="strip"><div><strong>💰 Preço que cabe no bolso</strong><span>Economia nas suas compras</span></div><div><strong>🥬 Variedade de verdade</strong><span>Temos mercadorias para o seu dia a dia</span></div><div><strong>🤝 Atendimento amigo</strong><span>Estamos esperando por você</span></div></div>
+
+    <section id="produtos">
+      <div class="section-title"><span class="eyebrow">Tem de tudo!</span><h2>Faça suas compras em um só lugar</h2><p>Abasteça sua casa, prepare o churrasco ou escolha algo gostoso para o almoço. Na Guarani você encontra!</p></div>
+      <div class="products">
+        <article class="product"><img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=700&q=80" alt="Frutas e verduras frescas"><div><h3>Frutas e verduras</h3><p>Mais frescor e sabor para sua mesa.</p></div></article>
+        <article class="product"><img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=700&q=80" alt="Carnes para churrasco"><div><h3>Carnes</h3><p>Opções para suas refeições e churrascos.</p></div></article>
+        <article class="product"><img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=700&q=80" alt="Frango assado dourado"><div><h3>Frangos</h3><p>E aos domingos tem frango assado por R$ 50!</p></div></article>
+        <article class="product"><img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&w=700&q=80" alt="Bebidas geladas"><div><h3>Cervejas e bebidas</h3><p>Bebidas para deixar seu encontro completo.</p></div></article>
+        <article class="product"><img src="https://unsplash.com/photos/cgSG6ycxvuU/download?force=true&w=700&q=85" alt="Saco fechado de carvão"><div><h3>Carvão</h3><p>Saco fechado, pronto para seu churrasco.</p></div></article>
+        <article class="product"><img src="https://images.pexels.com/photos/36522088/pexels-photo-36522088.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Gelo embalado em saco fechado"><div><h3>Gelo</h3><p>Gelo embalado para bebidas bem geladas.</p></div></article>
+        <article class="product"><div><h3>Mercearia em geral</h3><p>Produtos para sua casa e sua família.</p></div></article>
+        <article class="product"><img src="https://images.unsplash.com/photo-1543168256-418811576931?auto=format&fit=crop&w=700&q=80" alt="Produtos variados"><div><h3>E muito mais!</h3><p>Venha conferir nossa variedade de mercadorias.</p></div></article>
+      </div>
+    </section>
+
+    <section class="sunday" id="domingo">
+      <div><span class="eyebrow">Domingo tem sabor especial</span><h2>Seu almoço de domingo já tem destino!</h2><p>Venha garantir aquele frango assado delicioso para reunir a família. Aproveite nossa oferta especial e deixe o almoço por nossa conta!</p><div class="price-line">FRANGO ASSADO — R$ 50,00</div><div class="actions"><a class="btn primary" href="https://wa.me/5567996711013?text=Ol%C3%A1!%20Quero%20reservar%20um%20frango%20assado%20de%20domingo." target="_blank" rel="noopener">Consultar pelo WhatsApp</a></div></div>
+      <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=1000&q=85" alt="Frango assado dourado servido para o almoço">
+    </section>
+
+    <section class="callout"><h2>Mercearia Guarani: vendemos de tudo!</h2><p>Mercadorias no melhor preço, variedade para toda a família e atendimento com carinho.<br><strong>Venha fazer uma visita. Esperamos por você!</strong></p><a class="btn primary" style="background:var(--green);color:white" href="https://wa.me/5567996711013" target="_blank" rel="noopener">Peça informações agora</a></section>
+  </main>
+
+  <footer id="contato">
+    <div><h3>MERCEARIA GUARANI</h3><p>Seu mercado de confiança, com variedade, qualidade e mercadorias no melhor preço.</p></div>
+    <div><h3>Horário de atendimento</h3><p>🕡 Todos os dias, das 6h30 às 19h<br>🎉 Atendemos também nos feriados!</p></div>
+    <div><h3>Fale com a gente</h3><p>📱 <a href="tel:+5567996711013">+55 67 99671-1013</a><br>💬 <a href="https://wa.me/5567996711013" target="_blank" rel="noopener">Chamar no WhatsApp</a></p></div>
+  </footer>
+  <div class="copyright">© 2026 Mercearia Guarani — Todos os direitos reservados.</div>
+
+  <div class="chat-window" id="chatWindow" aria-label="Chat da Mercearia Guarani">
+    <div class="chat-header">
+      <div><strong>Assistente Virtual</strong><small>🟢 Mercearia Guarani — online</small></div>
+      <button class="chat-close" id="chatClose" aria-label="Fechar chat">×</button>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="chat-message bot">Olá! Sou o assistente virtual da Mercearia Guarani 🤖<br>Pergunte sobre produtos, horários, promoções ou contato.</div>
+      <div class="chat-options">
+        <button type="button" data-answer="Quais produtos vocês vendem?">Produtos</button>
+        <button type="button" data-answer="Qual é o horário de atendimento?">Horário</button>
+        <button type="button" data-answer="Quanto custa o frango assado?">Frango assado</button>
+        <button type="button" data-answer="Qual é o telefone de contato?">Contato</button>
+      </div>
+    </div>
+    <form class="chat-form" id="chatForm">
+      <input id="chatInput" type="text" placeholder="Digite sua mensagem..." autocomplete="off" aria-label="Mensagem">
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+  <button class="whats" id="chatToggle" type="button" aria-label="Abrir chat">✆</button>
+
+  <script>
+    const chatWindow = document.getElementById('chatWindow');
+    const chatToggle = document.getElementById('chatToggle');
+    const chatClose = document.getElementById('chatClose');
+    const chatBody = document.getElementById('chatBody');
+    const chatForm = document.getElementById('chatForm');
+    const chatInput = document.getElementById('chatInput');
+
+    chatToggle.onclick = () => chatWindow.classList.toggle('open');
+    chatClose.onclick = () => chatWindow.classList.remove('open');
+
+    function addMessage(text, type) {
+      const message = document.createElement('div');
+      message.className = `chat-message ${type}`;
+      message.textContent = text;
+      chatBody.appendChild(message);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function getAssistantAnswer(question) {
+      const text = question.trim().toLowerCase();
+
+      if (!text) return 'Digite sua pergunta para eu poder ajudar.';
+      if (/hor[áa]rio|hora|aberto|fecha|fechado|feriado|atende|atendimento/.test(text)) return 'Atendemos todos os dias, das 6h30 às 19h, inclusive nos feriados.';
+      if (/frango|domingo|assado|almo[cç]o|galinha/.test(text)) return 'Aos domingos temos frango assado por R$ 50,00. Para reservar ou confirmar a disponibilidade, chame pelo WhatsApp: +55 67 99671-1013.';
+      if (/telefone|contato|whatsapp|n[uú]mero|ligar|chamar/.test(text)) return 'Você pode falar conosco pelo telefone ou WhatsApp: +55 67 99671-1013.';
+      if (/carv[ãa]o|churrasco/.test(text)) {
+        if (/tem|vende|vende|dispon[ií]vel|pre[cç]o|quanto/.test(text)) return 'Vendemos carvão em saco fechado, ideal para churrasco. Consulte o preço atual e a disponibilidade pelo WhatsApp: +55 67 99671-1013.';
+        return 'Temos carvão em saco fechado para churrasco.';
+      }
+      if (/gelo|bebida gelada/.test(text)) return 'Vendemos gelo embalado para deixar suas bebidas bem geladas. Para saber o preço e a disponibilidade, fale conosco pelo WhatsApp.';
+      if (/entrega|delivery|entregar|leva|leva em casa|moto/.test(text)) return 'Para consultar se entregamos no seu endereço e verificar as condições de entrega, envie o bairro ou a localização pelo WhatsApp: +55 67 99671-1013.';
+      if (/pagamento|pag[aá]|dinheiro|cart[ãa]o|pix|parcel/.test(text)) return 'Para confirmar formas de pagamento aceitas e condições, fale conosco pelo WhatsApp: +55 67 99671-1013.';
+      if (/onde|endere[cç]o|localiza[cç][ãa]o|fica|chegar|rota|mapa/.test(text)) return 'Posso confirmar o endereço completo e a melhor rota pelo WhatsApp: +55 67 99671-1013.';
+      if (/reserva|reservar|separar|guardar/.test(text)) return 'Reserve o produto pelo WhatsApp informando o item e a quantidade desejada: +55 67 99671-1013.';
+      if (/estoque|tem estoque|dispon[ií]vel|tem em/.test(text)) return 'Posso passar uma lista geral, mas a disponibilidade pode mudar durante o dia. Confirme diretamente pelo WhatsApp: +55 67 99671-1013.';
+      if (/pre[cç]o|valor|quanto|custa|promo[cç][ãa]o|oferta|barato|desconto/.test(text)) {
+        if (/frango|domingo/.test(text)) return 'O frango assado custa R$ 50,00 aos domingos. Reserve pelo WhatsApp informando a quantidade desejada.';
+        return 'Temos mercadorias com preços especiais. Consulte o preço atual de qualquer produto pelo WhatsApp: +55 67 99671-1013.';
+      }
+      if (/produto|vende|vendem|mercadoria|tem|dispon[ií]vel|variedade|comprar|estoque|catalogo|cat[aá]logo/.test(text)) return 'Vendemos frutas, verduras, carnes, frangos assados, cervejas, bebidas, carvão em saco fechado, gelo embalado e mercadorias em geral.';
+      if (/fruta|verdura|legume|hortifruti|fresco/.test(text)) return 'Temos frutas e verduras frescas. A variedade disponível pode mudar conforme o dia; consulte pelo WhatsApp: +55 67 99671-1013.';
+      if (/carne|bife|picanha|lingui[cç]a|costela|peixe/.test(text)) return 'Temos opções de carnes para refeições e churrascos. Para saber os cortes, preços e disponibilidade, fale conosco pelo WhatsApp.';
+      if (/cerveja|bebida|refrigerante|suco|[aá]gua/.test(text)) return 'Temos cervejas e diversas bebidas. Para consultar marcas, preços e disponibilidade, fale conosco pelo WhatsApp.';
+      if (/feriado|domingo|sábado|sabado|segunda|terça|terca|quarta|quinta|sexta/.test(text)) return 'Atendemos todos os dias, das 6h30 às 19h, inclusive feriados.';
+      if (/oi|ol[aá]|bom dia|boa tarde|boa noite|opa|obrigad|tchau|valeu/.test(text)) return 'Olá! Posso ajudar com produtos, preços, horários, reservas, carvão, gelo, frango assado e contato da Mercearia Guarani.';
+
+      const fallback = 'Entendi sua pergunta. Para responder com precisão: “' + question + '”, nosso atendente pode confirmar pelo WhatsApp: +55 67 99671-1013.';
+      return fallback;
+    }
+
+    function askAssistant(question) {
+      addMessage(question, 'user');
+      chatInput.value = '';
+      setTimeout(() => addMessage(getAssistantAnswer(question), 'bot'), 350);
+    }
+
+    document.querySelectorAll('.chat-options button').forEach(button => {
+      button.onclick = () => askAssistant(button.dataset.answer);
+    });
+
+    chatForm.onsubmit = event => {
+      event.preventDefault();
+      const message = chatInput.value.trim();
+      if (message) askAssistant(message);
+    };
+  </script>
+</body>
+</html>
